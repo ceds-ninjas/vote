@@ -1,0 +1,4 @@
+port: 8000
+
+source:  src
+destination: dist

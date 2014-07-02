@@ -1,0 +1,47 @@
+<hr>
+Total issues: {{length}}
+Unique authors:
+{{view Em.Select
+	content=uniqueAuthors
+	optionValuePath="content"
+	optionLabelPath="content.fullName"
+	prompt="Select an author"
+	value=selectedAuthor
+}}
+
+filtering by: {{selectedAuthor.firstName}}
+
+
+{{#if isIssues}}
+	<table>
+		<thead>
+		<th>Vote for this issue</th>
+		<th>Id:</th>
+		<th>Title:</th>
+		<th>Description:</th>
+		<th>Department:</th>
+		<th>Creation date:</th>
+		<th>Votes:</th>
+		<th>Users with votes:</th>
+		</thead>
+		<tbody>
+		{{#each issue in controller.filtered}}
+			<tr>
+				<td>{{input type='checkbox' checked=isVote}}</td>
+				<td>{{issue.id}}</td>
+				<td>{{issue.title}}</td>
+				<td>{{issue.description}}</td>
+				<td>{{issue.department}}</td>
+				<td>{{issue.creationDate}}</td>
+				<td>{{issue.votes.length}}</td>
+				<td>{{usersFirstNames}}</td>
+				<td>{{#link-to 'issue.update' issue}}Edit{{/link-to}} |
+				<button {{action 'deleteIssue' issue}}>Delete</button></td>
+			</tr>
+		{{/each}}
+		</tbody>
+	</table>
+{{else}}
+	<p>There are currently no issues. Why don't you use this time to learn Kung Fu?</p>
+{{/if}}
+

@@ -36,5 +36,5 @@ App.Issue.FIXTURES = [{
 	description: 'aaaa a dLorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
 	department: 'DS',
 	creationDate: 'Mon, 26 Aug 2013 20:23:43 GMT',
-	votes: [5]
+	votes: []
 }];

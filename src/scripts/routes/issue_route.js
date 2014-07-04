@@ -1,6 +1,6 @@
 App.IssueRoute = Ember.Route.extend({
 	model: function(params) {
-		return this.store.find('issue', params.issue_id);
+		return this.get('store').find('issue', params.issue_id);
 	}
 
 //	setupController: function(controller, model) {

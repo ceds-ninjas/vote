@@ -2,40 +2,27 @@ App.ApplicationRoute = Ember.Route.extend({
 
 	actions: {
 
-		/**
-		 * Create an issue
-		 * @param issue {object}
-		 */
-		addIssue: function(issue) {
-			var self = this;
-
-			var attrs = issue.getProperties(
-				'title',
-				'description',
-				'department'
-			);
-
-			self.get('store').createRecord('issue', attrs);
-		},
-
-		/**
-		 * Update an existing issue
-		 * @param issue {object}
-		 */
-		updateIssue: function(issue) {
+		saveIssue: function(issue) {
 			var self = this,
-				currentIssue = null;
+				issueToSave = null;
 
 			var attrs = issue.getProperties(
-				'id',
 				'title',
 				'description',
 				'department'
 			);
 
-			currentIssue = self.controllerFor('issue').get('content', attrs.id);
+			if (!!issue.id) {   // existing issue
+				issueToSave = self.controllerFor('issue', issue.id).get('content');
+				issueToSave.setProperties(attrs);
 
-			currentIssue.save().then(function() {
+			} else {    // new issue
+				issueToSave = self.get('store').createRecord('issue', attrs);
+				issueToSave.set('creationDate', new Date());    // todo - should include last updated date
+
+			}
+
+			issueToSave.save().then(function() {
 				self.transitionTo('issues');
 			});
 
@@ -49,7 +36,7 @@ App.ApplicationRoute = Ember.Route.extend({
 			var self = this,
 				currentIssue = null;
 
-			currentIssue = self.controllerFor('issue').get('content', issue.getProperties('id'));
+			currentIssue = self.controllerFor('issue').get('content', issue.get('id'));
 
 			currentIssue.deleteRecord();
 			currentIssue.save().then(function() {
@@ -65,12 +52,11 @@ App.ApplicationRoute = Ember.Route.extend({
 		 */
 		addVote: function(issue, vote) {
 			var self = this,
-				currentIssue = null,
-				currentVote = null;
+				currentIssue = null;
 
 			currentIssue = self.controllerFor('issue').get('content', issue.getProperties('id'));
 
-			currentVote = self.get('store').createRecord('vote', {
+			self.get('store').createRecord('vote', {
 				user: self.get('currentUser'),
 				issue: currentIssue
 			}).save();
@@ -83,33 +69,6 @@ App.ApplicationRoute = Ember.Route.extend({
 
 //			var vote = self.get('store').deleteRecord('vote')
 		}
-
-//		saveIssue: function(issue) {
-//			var me = this,
-//				store = me.store,
-//				issueToSave,
-//				model;
-//
-//			issueToSave = {
-//				title: issue.title,
-//				description: issue.description,
-//				department: issue.department
-//			};
-//
-//			if (issue.id) {
-//				model = this.controllerFor('issue').get('model')
-//			} else {
-//				model = store.createRecord('issue', issueToSave);
-//			}
-//
-//			model.set('creationDate', new Date());
-//
-//			// persist the record and transition
-//			model.save().then(function() {
-//				me.transitionTo('issues');
-//			});
-//
-//		},
 
 	}
 });

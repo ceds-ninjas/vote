@@ -15,10 +15,8 @@ issue/update.hbs
 			{{input type="text" value=department}}
 		</li>
 	</ul>
-	<button {{action "updateIssue" this}}>UPDATE ISSUE</button>
-	<button {{action "addIssue" this}}>ADD ISSUE</button>
+	<button {{action "saveIssue" this}}>Save</button>
 	<button {{action "deleteIssue" this}}>Delete</button>
-	<button {{action "saveIssue" this}} {{bind-attr disabled=isNotComplete}}>Update issue</button> |
 	{{#link-to "issues"}}Cancel{{/link-to}}
 </form>
 

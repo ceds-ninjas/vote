@@ -5,8 +5,7 @@ App.Vote = DS.Model.extend({
 		async: true
 	}),
 	issue: DS.belongsTo('issue', {
-//		inverse: 'votes',
-		inverse: null,
+		inverse: 'votes',
 		async: true
 	}),
 	date: DS.attr('string', {

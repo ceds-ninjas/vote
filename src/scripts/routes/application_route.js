@@ -34,12 +34,12 @@ App.ApplicationRoute = Ember.Route.extend({
 		 */
 		deleteIssue: function(issue) {
 			var self = this,
-				currentIssue = null;
+				issueToDelete = null;
 
-			currentIssue = self.controllerFor('issue').get('content', issue.get('id'));
+			issueToDelete = self.controllerFor('issue').get('content', issue.get('id'));
 
-			currentIssue.deleteRecord();
-			currentIssue.save().then(function() {
+			issueToDelete.deleteRecord();
+			issueToDelete.save().then(function() {
 				self.transitionTo('issues');
 			});
 
@@ -52,13 +52,13 @@ App.ApplicationRoute = Ember.Route.extend({
 		 */
 		addVote: function(issue, vote) {
 			var self = this,
-				currentIssue = null;
+				voteToAdd = null;
 
-			currentIssue = self.controllerFor('issue').get('content', issue.getProperties('id'));
+			voteToAdd = self.controllerFor('issue').get('content', issue.getProperties('id'));
 
 			self.get('store').createRecord('vote', {
 				user: self.get('currentUser'),
-				issue: currentIssue
+				issue: voteToAdd
 			}).save();
 
 		},

@@ -24,11 +24,6 @@ App.IssuesController = Ember.ArrayController.extend({
 
 
 
-	isNotComplete: function() {
-		return !!((this.get('title') && this.get('title').length) &&
-			(this.get('description') && this.get('description').length) &&
-			(this.get('department') && this.get('department').length)) === false;
-	}.property('title', 'description', 'department'),
 
 	isIssues: function() {
 		return this.get('length') > 0;

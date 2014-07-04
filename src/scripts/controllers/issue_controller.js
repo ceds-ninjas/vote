@@ -4,12 +4,10 @@ App.IssueController = Ember.ObjectController.extend({
 
 	init: function() {
 		this._super();
-		console.log('Issue Controller');
+		console.log('ISSUE Controller');
 	},
 
-
 	isVote: null,
-
 
 
 //	users: function() {

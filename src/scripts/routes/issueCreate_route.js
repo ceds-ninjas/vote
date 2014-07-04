@@ -11,4 +11,5 @@ App.IssueCreateRoute = Ember.Route.extend({
 			controller: 'issueCreate'   // require a new controller, don't want to reuse Update model
 		})
 	}
+
 });

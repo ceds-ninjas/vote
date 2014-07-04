@@ -1,6 +1,6 @@
 issue/update.hbs
 
-<form>
+<form {{action "saveIssue" this on="submit"}}>
 	<ul>
 		<li>
 			<label>Title</label>
@@ -15,7 +15,8 @@ issue/update.hbs
 			{{input type="text" value=department}}
 		</li>
 	</ul>
-	<button {{action "saveIssue" this}}>Save</button>
+
+	<button type="submit" {{bind-attr disabled=isNotComplete}}>Save</button>
 	<button {{action "deleteIssue" this}}>Delete</button>
 	{{#link-to "issues"}}Cancel{{/link-to}}
 </form>

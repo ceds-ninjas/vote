@@ -1,28 +1,27 @@
 <hr>
-Total issues: {{length}}
-Unique authors:
-{{view Em.Select
+Total issues: <strong>{{length}}</strong>
+<br>
+Filtering by: {{view Em.Select
 	content=uniqueAuthors
 	optionValuePath="content"
 	optionLabelPath="content.fullName"
-	prompt="Select an author"
+	prompt="All authors"
 	value=selectedAuthor
 }}
-
-filtering by: {{selectedAuthor.firstName}}
-
+{{!selectedAuthor.firstName}}
+<br>
 
 {{#if isIssues}}
-	<table>
+	<table class="table table-striped">
 		<thead>
-		<th>Vote for this issue</th>
-		<th>Id:</th>
-		<th>Title:</th>
-		<th>Description:</th>
-		<th>Department:</th>
-		<th>Creation date:</th>
-		<th>Votes:</th>
-		<th>Users with votes:</th>
+			<th>Vote</th>
+			<th>Id</th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Department</th>
+			<th>Creation date</th>
+			<th>Votes</th>
+			<th>Users with votes</th>
 		</thead>
 		<tbody>
 		{{#each issue in controller.filtered}}
@@ -36,7 +35,7 @@ filtering by: {{selectedAuthor.firstName}}
 				<td>{{issue.votes.length}}</td>
 				<td>{{usersFirstNames}}</td>
 				<td>{{#link-to 'issue.update' issue}}Edit{{/link-to}} |
-				<button {{action 'deleteIssue' issue}}>Delete</button></td>
+				<button {{action "deleteIssue" issue}}>Delete</button></td>
 			</tr>
 		{{/each}}
 		</tbody>

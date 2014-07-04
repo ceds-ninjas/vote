@@ -1,10 +1,20 @@
-<p style="text-align: right">Logged in as <strong>{{currentUser.fullName}}</strong></p>
-<h1>{{siteName}}</h1>
-<nav>
-	<li>{{#link-to 'issues'}}Issues{{/link-to}}</li>
-	<li>{{#link-to 'issue' 1}}Issue 1{{/link-to}}</li>
-	<li>{{#link-to 'issue' 2}}Issue 2{{/link-to}}</li>
-	<li>{{#link-to 'issue' 3}}Issue 3{{/link-to}}</li>
-	<li>{{#link-to 'issue.create'}}New Issue{{/link-to}}</li>
-	<li>{{#link-to 'issue.update' 2}}Edit Issue 2{{/link-to}}</li>
-</nav>
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			{{#link-to "issues" class="navbar-brand"}}{{siteName}}{{/link-to}}
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					{{#link-to 'issue.create'}}<strong>New Issue</strong>{{/link-to}}
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

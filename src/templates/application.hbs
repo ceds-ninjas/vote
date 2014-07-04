@@ -1,2 +1,5 @@
 {{partial 'header'}}
-{{outlet}}
+<main class="container">
+	<p style="text-align:right">Logged in as <strong>{{currentUser.fullName}}</strong></p>
+	{{outlet}}
+</main>

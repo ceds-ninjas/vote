@@ -34,15 +34,14 @@ App.ApplicationRoute = Ember.Route.extend({
 		 */
 		deleteIssue: function(issue) {
 			var self = this,
-				issueToDelete = null;
+				currentRoute = self.get('controller').get('currentPath');
 
-			issueToDelete = self.controllerFor('issue').get('content', issue.get('id'));
-
-			issueToDelete.deleteRecord();
-			issueToDelete.save().then(function() {
-				self.transitionTo('issues');
+			issue.deleteRecord();
+			issue.save().then(function() {
+				if (currentRoute === 'issue.update' || 'issue.new') {
+					self.transitionTo('issues');
+				}
 			});
-
 		},
 
 		/**

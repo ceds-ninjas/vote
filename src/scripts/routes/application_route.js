@@ -44,6 +44,12 @@ App.ApplicationRoute = Ember.Route.extend({
 			});
 		},
 
+
+		removeVote: function(issue) {
+			console.log('remove vote')
+		},
+
+
 		/**
 		 * Add a vote
 		 * @param issue {object}
@@ -51,22 +57,19 @@ App.ApplicationRoute = Ember.Route.extend({
 		 */
 		addVote: function(issue, vote) {
 			var self = this,
-				voteToAdd = null;
-
-			voteToAdd = self.controllerFor('issue').get('content', issue.getProperties('id'));
+				currentUser = self.get('controller').get('currentUser').get('content'),
+				currentIssue = issue.get('content');
 
 			self.get('store').createRecord('vote', {
-				user: self.get('currentUser'),
-				issue: voteToAdd
-			}).save();
+				'issue': currentIssue,
+				'user': currentUser
+			}).save().then(function(currentVote) {
+				currentUser.get('votes').addObject(currentVote);
+				currentIssue.get('votes').addObject(currentVote);
 
-		},
-
-
-		removeVote: function(issue) {
-			var self = this;
-
-//			var vote = self.get('store').deleteRecord('vote')
+//				currentUser.save();
+//				currentIssue.save();
+			});
 		}
 
 	}

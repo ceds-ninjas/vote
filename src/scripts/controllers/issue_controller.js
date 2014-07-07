@@ -28,6 +28,7 @@ App.IssueController = Ember.ObjectController.extend({
 
 		self.send(isChecked ? 'addVote' : 'removeVote', self);
 
+		return false;
 	}.observes('isVote')
 
 });

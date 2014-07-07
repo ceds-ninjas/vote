@@ -31,7 +31,7 @@ App.Issue.FIXTURES = [{
 	description: 'Lorxcvcxvcxem ispum dolor scxvxcvit amet in voluptate fugiat nulla pariatur.',
 	department: 'CE&DS',
 	creationDate: 'Fri, 07 Aug 2013 10:10:10 GMT',
-	votes: [3,4]
+	votes: [3]
 },{
 	id: 3,
 	title: 'record three',

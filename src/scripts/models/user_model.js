@@ -18,12 +18,12 @@ App.User.FIXTURES = [{
 	firstName: 'Harry',
 	lastName: 'Kewell',
 	fullName: 'Harry Kewell',
-	votes: ['1', '2', '3']
+	votes: ['1', '3']
 },{
 	id: 2,
 	staffNumber: '006262626',
 	firstName: 'Gerry',
 	lastName: 'Simon',
 	fullName: 'Gerry Simon',
-	votes: ['3']
+	votes: ['2']
 }];

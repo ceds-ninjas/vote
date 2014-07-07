@@ -2,10 +2,21 @@ App.IssuesController = Ember.ArrayController.extend({
 
 	needs: ['application'],
 
-	init: function() {
-		this._super();
-		console.log('Issues Controller');
-	},
+	application: Ember.computed.alias('controllers.application'),
+
+	itemController: 'issue',
+
+	sortAscending: false,
+
+	sortProperties: ['votes.length'],
+
+	_debug: function() {
+		console.log('ISSUES Controller');
+	}.on('init'),
+
+
+
+	selectedAuthor: null,
 
 	filtered: function() {
 		var self = this;
@@ -17,20 +28,9 @@ App.IssuesController = Ember.ArrayController.extend({
 		}
 	}.property('selectedAuthor'),
 
-	itemController: 'issue',
-
-	sortAscending: false,
-	sortProperties: ['votes.length'],
-
-
-
-
 	isIssues: function() {
 		return this.get('length') > 0;
 	}.property('length'),
-
-
-	selectedAuthor: null,
 
 	uniqueAuthors: function() {
 		return this.getEach('author').uniq();

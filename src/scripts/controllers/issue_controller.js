@@ -2,13 +2,15 @@ App.IssueController = Ember.ObjectController.extend({
 
 	needs: ['application'],
 
-	init: function() {
-		this._super();
+	application: Ember.computed.alias('controllers.application'),
+
+	_debug: function() {
 		console.log('ISSUE Controller');
-	},
+	}.on('init'),
+
+
 
 	isVote: null,
-
 
 //	users: function() {
 //		return this.get('votes').mapBy('user');

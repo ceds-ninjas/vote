@@ -1,5 +1,7 @@
 var NeedsIssue = Ember.Mixin.create({
+
 	needs: ['issue'],
+
 	issue: Ember.computed.alias('controllers.issue'),
 
 	isNotComplete: function() { // todo - refactor
@@ -7,4 +9,5 @@ var NeedsIssue = Ember.Mixin.create({
 		(this.get('description') && this.get('description').length) &&
 		(this.get('department') && this.get('department').length)) === false;
 	}.property('title', 'description', 'department')
+
 });

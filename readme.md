@@ -8,5 +8,5 @@ bower install
 # Run
 
 ````
-grunt
+gulp
 ````

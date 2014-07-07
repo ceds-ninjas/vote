@@ -2,6 +2,11 @@ App.ApplicationRoute = Ember.Route.extend({
 
 	actions: {
 
+		/**
+		 * Save an Issue
+		 * todo - split method in to smaller parts addIssue or updateIssue
+		 * @param issue {object}
+		 */
 		saveIssue: function(issue) {
 			var self = this,
 				issueToSave = null;
@@ -59,11 +64,11 @@ App.ApplicationRoute = Ember.Route.extend({
 				currentVote = '';
 
 
-//			i am a user
-//			i am checking an issue
-//			if issue is checked I have already selected it ,
-//				find vote by user id, delete the issue
-//			if not i will createRecord
+			// i am a user
+			// i am checking an issue
+			// if issue is checked I have already selected it ,
+			//	find vote by user id, delete the issue
+			// update any non magical dependencies
 
 			var usersWhoVotesOnIssue = issue.get('content').get('votes').getEach('user.id');
 
@@ -81,33 +86,6 @@ App.ApplicationRoute = Ember.Route.extend({
 					});
 				}
 			}
-
-
-
-//			if (currentVote.length) {
-//				currentVote.deleteRecord();
-//				currentVote.save();
-//			}
-
-
-//			var currentVoteIdsByIssue = currentIssue.get('votes').mapBy('id');
-//			var currentVoteIdsByUser = currentUser.get('votes').mapBy('id');
-//
-//			for (var i=1; i<currentVoteIdsByIssue.length; i++) {
-//				// is a match
-//				if (currentVoteIdsByUser.indexOf(currentVoteIdsByIssue[i]) > -1) {
-//					// determined vote in context
-//					currentVote = self.get('store').find('vote', currentVoteIdsByIssue[i]).then(function(vote) {
-//						vote.deleteRecord();
-//
-//					});
-//				}
-//			}
-//
-//			currentUser = '';
-//			currentIssue = '';
-//			currentVote = '';
-
 		},
 
 
@@ -128,6 +106,7 @@ App.ApplicationRoute = Ember.Route.extend({
 				currentUser.get('votes').addObject(currentVote);
 				currentIssue.get('votes').addObject(currentVote);
 
+				// todo - saving here is probably important
 //				currentUser.save();
 //				currentIssue.save();
 			});

@@ -10,12 +10,6 @@ App.IssuesController = Ember.ArrayController.extend({
 
 	sortProperties: ['votes.length'],
 
-	_debug: function() {
-		console.log('ISSUES Controller');
-	}.on('init'),
-
-
-
 	selectedAuthor: null,
 
 	filtered: function() {

@@ -1,1 +1,3 @@
-App.IssueCreateController = Ember.ObjectController.extend(NeedsIssue, {});
+App.IssueCreateController = Ember.ObjectController.extend({
+
+});

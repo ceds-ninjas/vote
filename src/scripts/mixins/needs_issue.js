@@ -1,4 +1,4 @@
-var NeedsIssue = Ember.Mixin.create({
+App.NeedsIssueMixin = Ember.Mixin.create({
 
 	needs: ['issue'],
 

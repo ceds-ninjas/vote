@@ -4,12 +4,6 @@ App.IssueController = Ember.ObjectController.extend({
 
 	application: Ember.computed.alias('controllers.application'),
 
-	_debug: function() {
-		console.log('ISSUE Controller');
-	}.on('init'),
-
-
-
 	isVote: null,
 
 //	users: function() {

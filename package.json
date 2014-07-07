@@ -1,17 +1,20 @@
 {
-  "name": "poll-app",
-  "description": "desc",
-  "version": "0.0.1",
-  "private": true,
-  "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-ember-templates": "*",
-    "grunt-contrib-connect": "~0.8.0",
-    "grunt-contrib-sass": "~0.7.3",
-    "grunt-contrib-watch": "~0.6.1",
-    "time-grunt": "~0.3.1",
-    "grunt-autoprefixer": "~0.7.2",
-    "grunt-contrib-clean": "~0.5.0",
-    "matchdep": "~0.3.0"
-  }
+	"name": "sample-gulpfile",
+	"version": "0.0.1",
+	"devDependencies": {
+		"browser-sync": "*",
+		"gulp": "*",
+		"gulp-sass": "*",
+		"gulp-ember-handlebars": "*",
+		"gulp-changed": "*",
+		"gulp-rimraf": "*",
+		"gulp-inject": "*",
+		"gulp-order": "*",
+		"gulp-replace": "*",
+		"gulp-concat": "*",
+		"gulp-jshint": "*",
+		"gulp-uglify": "*",
+		"gulp-cssmin": "*",
+		"gulp-bower-files": "*"
+	}
 }

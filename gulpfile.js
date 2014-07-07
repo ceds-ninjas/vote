@@ -101,21 +101,6 @@ gulp.task('local:hb', function () {
 
 /**
  * [description]
- */
-gulp.task('local:server', function () {
-    browserSync.init(null, {
-        server: {
-            baseDir: DIST_DIR
-        },
-        proxy: {
-            host: SERVER_HOST,
-            port: SERVER_HTTP_PORT
-        }
-    });
-});
-
-/**
- * [description]
  * @return {object} Node.js Stream object
  */
 gulp.task('local:build', [
@@ -168,11 +153,7 @@ gulp.task('local:build', [
                 )
             )
             .pipe(gulp.dest(DIST_DIR))
-            .pipe(
-               browserSync.reload({
-                   stream: true
-               })
-            );
+            .pipe(browserSync.reload({stream:true}));
     }
 );
 
@@ -186,9 +167,24 @@ gulp.task('clean', function () {
 
 /**
  * [description]
+ */
+gulp.task('local:server', function () {
+    browserSync.init(null, {
+        server: {
+            baseDir: DIST_DIR
+        },
+        proxy: {
+            host: SERVER_HOST,
+            port: SERVER_HTTP_PORT
+        }
+    });
+});
+
+/**
+ * [description]
  * @return {object} Node.js Stream object
  */
 gulp.task('default', ['clean', 'local:server'], function () {
     gulp.start('local:build');
-    gulp.watch('src/**/*', ['local:build']);
+    gulp.watch(SOURCE_DIR + '/**/*', ['local:build']);
 });

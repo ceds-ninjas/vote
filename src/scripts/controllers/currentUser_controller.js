@@ -1,14 +1,23 @@
-App.CurrentUserController = Ember.Controller.extend({
+App.CurrentUserController = Ember.ObjectController.extend({
 
-	_debug: function() {
-		//
-	}.on('init'),
+	needs: ['application'],
+
+	canVote: function() {
+		return this.get('remainingVotes');
+	}.property('remainingVotes'),
+
+	remainingVotes: function() {
+		return this.get('controllers.application.maxVotesAllowed') - this.get('votes.length');
+	}.property('votes.length'),
 
 
 
-	getUser: function(id) {
-		var _id = id || SiteSettings.currentUserId;
-		return this.get('store').find('user', _id);
-	}
+	votesObserver: function() {
+
+
+
+	}.observesBefore('votes.length')
+
+
 
 });

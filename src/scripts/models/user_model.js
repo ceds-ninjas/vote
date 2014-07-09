@@ -9,7 +9,6 @@ App.User = DS.Model.extend({
 	}.property('firstName', 'lastName'),
 
 	votes: DS.hasMany('vote', {
-		inverse: 'user',    // corresponding key
 		async: true
 	})
 });

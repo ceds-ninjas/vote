@@ -1,12 +1,10 @@
 // pivot model
 App.Vote = DS.Model.extend({
 	user: DS.belongsTo('user', {
-		inverse: 'votes',
 //		async: false
 	}),
 	issue: DS.belongsTo('issue', {
-		inverse: 'votes',
-//		async: false
+		async: false
 	}),
 	date: DS.attr('string', {
 		defaultValue: function() { return new Date(); }

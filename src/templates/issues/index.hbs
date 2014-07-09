@@ -27,7 +27,12 @@ Filtering by: {{view Em.Select
 		<tbody>
 		{{#each issue in controller.filtered}}
 			<tr>
-				<td>{{input type='checkbox' checked=isVote}}</td>
+				<td>{{vote-checkbox checked=voted
+									item=issue
+									disabled=cantVote
+									add="addVote"
+									remove="removeVote"}}
+				</td>
 				<td>{{issue.id}}</td>
 				<td>{{issue.title}}</td>
 				<td>{{issue.description}}</td>

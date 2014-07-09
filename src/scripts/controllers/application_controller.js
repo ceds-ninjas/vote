@@ -2,18 +2,10 @@ App.ApplicationController = Ember.ObjectController.extend({
 
 	siteName: 'Voting system',
 
+	maxVotesAllowed: 2,
+
 	needs: ['currentUser'],
-
-	currentUserController: Ember.computed.alias('controllers.currentUser'),
-
-	init: function() {
-		this._super();
-
-		// todo
-//		App.UserManager = UserService.create();
-
-
-	},
+	currentUser: Ember.computed.alias('controllers.currentUser'),
 
 	_debug: function() {
 		//
@@ -22,14 +14,7 @@ App.ApplicationController = Ember.ObjectController.extend({
 
 
 	currentPathChange: function() {
-		App.set('currentPath', this.get('currentPath'));
+		this.set('currentPath', this.get('currentPath'));
 	}.observes('currentPath'),
-
-	// todo
-//	currentUser: App.UserManager.getCurrentUser(),
-
-	currentUser: function() {
-		return this.get('currentUserController').getUser();
-	}.property()
 
 });

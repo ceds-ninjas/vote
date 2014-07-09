@@ -6,9 +6,9 @@ App.IssuesController = Ember.ArrayController.extend({
 
 	itemController: 'issue',
 
-	sortAscending: false,
-
-	sortProperties: ['votes.length'],
+//	sortAscending: false,
+//
+//	sortProperties: ['votes.length'],
 
 	_debug: function() {
 		console.log('ISSUES Controller');

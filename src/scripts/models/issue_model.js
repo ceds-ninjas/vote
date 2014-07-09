@@ -10,7 +10,6 @@ App.Issue = DS.Model.extend({
 		defaultValue: function() { return new Date(); }
 	}),
 	votes:          DS.hasMany('vote', {
-		inverse: 'issue',    // corresponding key
 		async: true
 	})
 });

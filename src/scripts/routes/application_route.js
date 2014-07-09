@@ -1,11 +1,20 @@
 App.ApplicationRoute = Ember.Route.extend({
 
+	beforeModel: function() {
+		var self = this,
+			currentUserController = self.controllerFor('currentUser');
+
+		return self.get('store').find('user', 1).then(function(user) {
+			currentUserController.set('content', user);
+		})
+	},
+
 	actions: {
 
 		/**
 		 * Save an Issue
 		 * todo - split method in to smaller parts addIssue or updateIssue
-		 * @param issue {object}
+		 * @param issue {object.App.IssueController}
 		 */
 		saveIssue: function(issue) {
 			var self = this,
@@ -35,7 +44,7 @@ App.ApplicationRoute = Ember.Route.extend({
 
 		/**
 		 * Delete an issue
-		 * @param issue {object}
+		 * @param issue {object.<App.IssueController>}
 		 */
 		deleteIssue: function(issue) {
 			var self = this,
@@ -53,64 +62,41 @@ App.ApplicationRoute = Ember.Route.extend({
 		 * Remove a vote
 		 * Assume that if that if an issue is checked, I have already
 		 * voted for it
-		 * @param issue {object}
+		 * @param id {String}
 		 */
 		removeVote: function(issue) {
-			console.log('remove vote');
-
 			var self = this,
-				currentUser = self.get('controller').get('currentUser').get('content'),
-				currentIssue = issue.get('content'),
-				currentVote = '';
+				currentUser = self.controllerFor('currentUser').get('model'),
+				currentVote = issue.get('currentUserVote');
 
+			currentVote.deleteRecord();
+			currentVote.save().then(function(rec) {
+				issue.get('model').save();
+				currentUser.get('votes').removeObject(rec);
+//				currentUser.save();
+			}).then(function() {
 
-			// i am a user
-			// i am checking an issue
-			// if issue is checked I have already selected it ,
-			//	find vote by user id, delete the issue
-			// update any non magical dependencies
-
-			var usersWhoVotesOnIssue = issue.get('content').get('votes').getEach('user.id');
-
-			for (var i=0; i<usersWhoVotesOnIssue.length; i++) {
-				if (currentUser.get('id') === usersWhoVotesOnIssue[i]) {
-					// vote index of matched users
-					var voteIdInContext = issue.get('content').get('votes').getEach('id')[i];
-
-					currentVote = self.get('store').find('vote', voteIdInContext).then(function(rec) {
-						rec.deleteRecord();
-						rec.save();
-
-						currentIssue.get('votes').removeObject(rec);
-						currentUser.get('votes').removeObject(rec);
-					});
-				}
-			}
+			});
 		},
-
 
 		/**
 		 * Add a vote
 		 * @param issue {object}
-		 * @param vote {boolean} @optional
 		 */
-		addVote: function(issue, vote) {
+		addVote: function(issue) {
 			var self = this,
-				currentUser = self.get('controller').get('currentUser').get('content'),
-				currentIssue = issue.get('content');
+				currentUser = self.controllerFor('currentUser');
 
 			self.get('store').createRecord('vote', {
-				'issue': currentIssue,
-				'user': currentUser
+				'issue': issue.get('model'),
+				'user': currentUser.get('model')
 			}).save().then(function(currentVote) {
 				currentUser.get('votes').addObject(currentVote);
-				currentIssue.get('votes').addObject(currentVote);
+				issue.get('votes').addObject(currentVote);
 
-				// todo - saving here is probably important
-//				currentUser.save();
-//				currentIssue.save();
+//				currentUser.get('model').save();
+//				issue.get('model').save();
 			});
 		}
-
 	}
 });

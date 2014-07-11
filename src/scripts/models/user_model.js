@@ -13,18 +13,39 @@ App.User = DS.Model.extend({
 	})
 });
 
+
+
 App.User.FIXTURES = [{
-	id: 1,
-	staffNumber: '003265326',
-	firstName: 'Harry',
-	lastName: 'Kewell',
-	fullName: 'Harry Kewell',
-	votes: ['1', '3']
+    id: 1,
+    staffNumber: '003265326',
+    firstName: 'Harry',
+    lastName: 'Kewell',
+    fullName: 'Harry Kewell',
+    votes: ['1', '3']
 },{
-	id: 2,
-	staffNumber: '006262626',
-	firstName: 'Gerry',
-	lastName: 'Simon',
-	fullName: 'Gerry Simon',
-	votes: ['2']
+    id: 2,
+    staffNumber: '006262626',
+    firstName: 'Gerry',
+    lastName: 'Simon',
+    fullName: 'Gerry Simon',
+    votes: ['2']
 }];
+
+//
+//App.User.FIXTURES = [
+//    {
+//        id: 1,
+//        "staffNumber": "CBA001",
+//        "firstName": "Amit",
+//        "lastName": "Malhotra",
+//        fullName: 'Amit Malhotra',
+//        votes: ['1', '3']
+//    },{
+//        id: 2,
+//        "staffNumber": "CBA002",
+//        "firstName": "Elise",
+//        "lastName": "Chant",
+//        fullName: 'Elise Chant',
+//        votes: ['2']
+//    }
+//];

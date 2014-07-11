@@ -1,5 +1,7 @@
 {{partial 'header'}}
 <main class="container">
-	<p style="text-align:right">Logged in as <strong>{{currentUser.fullName}}</strong> ({{currentUser.remainingVotes}})</p>
+	<p style="text-align:right">Logged in as <strong>{{currentUser.fullName}}</strong>
+		{{currentUser.votes.length}}
+		({{currentUser.remainingVotes}})</p>
 	{{outlet}}
 </main>

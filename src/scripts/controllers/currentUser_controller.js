@@ -1,6 +1,7 @@
 App.CurrentUserController = Ember.ObjectController.extend({
 
-	needs: ['application'],
+	needs: ['application', 'votes'],
+
 
 	canVote: function() {
 		return this.get('remainingVotes');
@@ -12,12 +13,13 @@ App.CurrentUserController = Ember.ObjectController.extend({
 
 
 
-	votesObserver: function() {
+
+//	votes: Em.computed.filterBy('allVotes', 'user', this.get('model'))
 
 
-
-	}.observesBefore('votes.length')
-
-
+	votes: function() {
+		return this.get('controllers.votes').filterBy('user', this.get('model'));
+	}.property('controllers.votes.length')
+//
 
 });

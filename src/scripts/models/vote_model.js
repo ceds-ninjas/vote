@@ -6,25 +6,44 @@ App.Vote = DS.Model.extend({
 	issue: DS.belongsTo('issue', {
 		async: false
 	}),
-	date: DS.attr('string', {
+	dateCreated: DS.attr('date', {
 		defaultValue: function() { return new Date(); }
 	})
 });
 
 
+
 App.Vote.FIXTURES = [{
-	id: 1,
-	user: 1,
-	issue: 1,
-	date: 'Mon, 26 Aug 2013 20:23:43 GMT'
+    id: 1,
+    user: 1,
+    issue: 1,
+    date: 'Mon, 26 Aug 2013 20:23:43 GMT'
 },{
-	id: 2,
-	user: 2,
-	issue: 1,
-	date: 'Mon, 26 Aug 2013 20:23:43 GMT'
+    id: 2,
+    user: 2,
+    issue: 1,
+    date: 'Mon, 26 Aug 2013 20:23:43 GMT'
 },{
-	id: 3,
-	user: 1,
-	issue: 3,
-	date: 'Mon, 26 Aug 2013 20:23:43 GMT'
+    id: 3,
+    user: 1,
+    issue: 3,
+    date: 'Mon, 26 Aug 2013 20:23:43 GMT'
 }];
+//
+//
+//App.Vote.FIXTURES = [{
+//	id: 1,
+//	user: 1,
+//	issue: 1,
+//    "dateCreated": "2014-07-09T15:05:00"
+//},{
+//	id: 2,
+//	user: 2,
+//	issue: 1,
+//    "dateCreated": "2014-07-09T15:05:00"
+//},{
+//	id: 3,
+//	user: 1,
+//	issue: 3,
+//    "dateCreated": "2014-07-09T15:05:00"
+//}];

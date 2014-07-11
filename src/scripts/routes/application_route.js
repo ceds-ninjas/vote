@@ -1,12 +1,14 @@
 App.ApplicationRoute = Ember.Route.extend({
 
 	beforeModel: function() {
-		var self = this,
-			currentUserController = self.controllerFor('currentUser');
+		var self = this;
 
 		return self.get('store').find('user', 1).then(function(user) {
-			currentUserController.set('content', user);
-		})
+            self.controllerFor('currentUser').set('model', user);
+            return self.get('store').find('vote');
+		}).then(function(votes) {
+            self.controllerFor('votes').set('model', votes);
+        }); 
 	},
 
 	actions: {
@@ -62,22 +64,22 @@ App.ApplicationRoute = Ember.Route.extend({
 		 * Remove a vote
 		 * Assume that if that if an issue is checked, I have already
 		 * voted for it
-		 * @param id {String}
+		 * @param issue {App.IssueController}
 		 */
 		removeVote: function(issue) {
 			var self = this,
-				currentUser = self.controllerFor('currentUser').get('model'),
 				currentVote = issue.get('currentUserVote');
 
-			currentVote.deleteRecord();
-			currentVote.save().then(function(rec) {
-				issue.get('model').save();
-				currentUser.get('votes').removeObject(rec);
-//				currentUser.save();
-			}).then(function() {
+            // store a handle to the vote
+            // Delete the vote
+            currentVote.deleteRecord();
 
-			});
-		},
+            // remove the linked dependency in parent
+            issue.get('votes').removeObject(currentVote);
+
+            // persist
+            currentVote.save();
+        },
 
 		/**
 		 * Add a vote
@@ -87,16 +89,17 @@ App.ApplicationRoute = Ember.Route.extend({
 			var self = this,
 				currentUser = self.controllerFor('currentUser');
 
-			self.get('store').createRecord('vote', {
+			// Create a vote
+			var vote = self.get('store').createRecord('vote', {
 				'issue': issue.get('model'),
 				'user': currentUser.get('model')
-			}).save().then(function(currentVote) {
-				currentUser.get('votes').addObject(currentVote);
-				issue.get('votes').addObject(currentVote);
-
-//				currentUser.get('model').save();
-//				issue.get('model').save();
 			});
+
+			// Add the reference value to parent model
+			issue.get('votes').addObject(vote);
+
+            // persist
+			vote.save();
 		}
 	}
 });

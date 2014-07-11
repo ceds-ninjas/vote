@@ -1,0 +1,1 @@
+App.VotesController = Ember.ArrayController.extend({});

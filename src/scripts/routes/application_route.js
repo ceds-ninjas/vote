@@ -34,8 +34,6 @@ App.ApplicationRoute = Ember.Route.extend({
 
 			} else {    // new issue
 				issueToSave = self.get('store').createRecord('issue', attrs);
-				issueToSave.set('creationDate', new Date());
-
 			}
 
 			issueToSave.save().then(function() {

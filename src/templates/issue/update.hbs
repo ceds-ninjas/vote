@@ -1,23 +1,23 @@
 issue/update.hbs
 
-<form {{action "saveIssue" this on="submit"}}>
+<form {{action "saveIssue" model on="submit"}}>
 	<ul>
 		<li>
 			<label>Title</label>
-			{{input type="text" value=title}}
+			{{input type="text" value=model.title}}
 		</li>
 		<li>
 			<label>Description</label>
-			{{textarea value=description}}
+			{{textarea value=model.description}}
 		</li>
 		<li>
 			<label>Department</label>
-			{{input type="text" value=department}}
+			{{input type="text" value=model.department}}
 		</li>
 	</ul>
 
 	<button type="submit" {{bind-attr disabled=isNotComplete}}>Save</button>
-	<button {{action "deleteIssue" this}}>Delete</button>
+	<button {{action "deleteIssue" model}}>Delete</button>
 	{{#link-to "issues"}}Cancel{{/link-to}}
 </form>
 

@@ -1,4 +1,4 @@
 window.SiteSettings = {
-	currentUserId: 2
+	currentUserId: 9
 };
 

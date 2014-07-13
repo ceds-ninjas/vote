@@ -107,8 +107,6 @@ DS.WebAPIAdapter = DS.RESTAdapter.extend({
 	},
 
 	ajax: function (url, type, hash, record) {
-		url += 's';
-
 		// if antiForgeryTokenSelector attribute exists, pass it in the header
 		var antiForgeryTokenElemSelector = get(this, 'antiForgeryTokenSelector');
 		if (antiForgeryTokenElemSelector) {

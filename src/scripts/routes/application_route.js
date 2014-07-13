@@ -3,13 +3,13 @@ App.ApplicationRoute = Ember.Route.extend({
 	beforeModel: function() {
 		var self = this;
 
-		return self.get('store').find('user', 1).then(function(user) {
+        return self.get('store').find('user', SiteSettings.currentUserId).then(function(user) {
             self.controllerFor('currentUser').set('model', user);
             return self.get('store').find('vote');
-		}).then(function(votes) {
+        }).then(function(votes) {
             self.controllerFor('votes').set('model', votes);
-        }); 
-	},
+        });
+    },
 
 	actions: {
 

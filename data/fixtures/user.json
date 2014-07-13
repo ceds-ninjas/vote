@@ -1,0 +1,44 @@
+[
+    {
+        "staffNumber": "CBA001",
+        "firstName": "Amit",
+        "lastName": "Malhotra",
+        "voteCount": 0,
+        "votes": [
+            {
+                "user": 9,
+                "issue": 17,
+                "dateCreated": "2014-07-10T01:05:00+10:00",
+                "id": 13
+            },
+            {
+                "user": 9,
+                "issue": 18,
+                "dateCreated": "2014-07-10T01:05:00+10:00",
+                "id": 14
+            }
+        ],
+        "id": 9
+    },
+    {
+        "staffNumber": "CBA002",
+        "firstName": "Elise",
+        "lastName": "Chant",
+        "voteCount": 0,
+        "votes": [
+            {
+                "user": 10,
+                "issue": 17,
+                "dateCreated": "2014-07-10T01:05:00+10:00",
+                "id": 15
+            },
+            {
+                "user": 10,
+                "issue": 18,
+                "dateCreated": "2014-07-10T01:05:00+10:00",
+                "id": 16
+            }
+        ],
+        "id": 10
+    }
+]

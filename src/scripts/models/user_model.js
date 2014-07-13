@@ -16,14 +16,14 @@ App.User = DS.Model.extend({
 
 App.User.FIXTURES = [
     {
-        id: 1,
+        id: 9,
         "staffNumber": "CBA001",
         "firstName": "Amit",
         "lastName": "Malhotra",
         fullName: 'Amit Malhotra',
         votes: ['1', '3']
     },{
-        id: 2,
+        id: 10,
         "staffNumber": "CBA002",
         "firstName": "Elise",
         "lastName": "Chant",

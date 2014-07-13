@@ -21,7 +21,7 @@ App.Issue = DS.Model.extend({
 App.Issue.FIXTURES = [{
 	id: 1,
     "title": "Issue 1",
-    "author": "1",
+    "author": "9",
     "description": "This is the issue that there is no issue.",
     "department": "Credit Card",
     "dateCreated": "2014-07-09T14:19:00",
@@ -30,11 +30,20 @@ App.Issue.FIXTURES = [{
 },{
 	id: 2,
     "title": "Issue 2",
-    "author": "2",
+    "author": "10",
     "description": "This is the issue that there is no issue.",
     "department": "Credit Card",
     "dateCreated": "2014-07-09T14:19:00",
     "dateUpdated": "2014-07-09T14:19:00",
 	"votes": [3]
+},{
+	id: 3,
+    "title": "Issue 3",
+    "author": "10",
+    "description": "This is the issue that there is no issue.",
+    "department": "Credit Card",
+    "dateCreated": "2014-07-09T14:19:00",
+    "dateUpdated": "2014-07-09T14:19:00",
+	"votes": []
 }];
 

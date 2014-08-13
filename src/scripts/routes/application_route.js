@@ -81,7 +81,7 @@ App.ApplicationRoute = Ember.Route.extend({
 
 		/**
 		 * Add a vote
-		 * @param issue {object}
+		 * @param issue {App.IssueController}
 		 */
 		addVote: function(issue) {
 			var self = this,
